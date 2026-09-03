@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOBSZ STURR | Suntik Saluran WA & APK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Oxanium', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        :root {
+            --biru-tua: #0a2463;
+            --biru: #2563eb;
+            --biru-muda: #60a5fa;
+            --biru-terang: #dbeafe;
+            --biru-gelap: #051441;
+            --putih: #ffffff;
+            --abu: #f1f5f9;
+            --hitam: #0f172a;
+            --hijau: #25D366;
+            --merah: #ef4444;
+            --kuning: #f59e0b;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--biru-gelap), var(--biru-tua), var(--biru));
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--putih);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+
+        /* === UKURAN LOGO TOKO — UBAH DISINI === */
+        .logo-area img {
+            width: 180px;       /* ← ubah lebar logo */
+            height: auto;       /* ← biarkan auto agar proporsional */
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1) inset;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+            color: var(--putih);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            margin-bottom: 25px;
+            color: var(--biru-terang);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 12px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--biru-muda);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 3px;
+        }
+
+        section {
+            margin: 50px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--biru-terang);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--biru-muda);
+        }
+
+        /* === UKURAN IKON JUDUL — UBAH DISINI === */
+        h2 img {
+            width: 60px;        /* ← ubah lebar ikon judul */
+            height: 60px;       /* ← ubah tinggi ikon judul */
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px 20px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--biru-muda), var(--biru-terang));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--biru-muda);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--putih);
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--biru-muda);
+            margin-bottom: 18px;
+        }
+
+        .order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--biru-muda), var(--biru));
+            color: var(--putih);
+            font-weight: 600;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* === UKURAN IKON TOMBOL PESAN — UBAH DISINI === */
+        .order-btn img {
+            width: 50px;        /* ← ubah lebar ikon tombol pesan */
+            height: 50px;       /* ← ubah tinggi ikon tombol pesan */
+            pointer-events: none;
+        }
+
+        .order-btn:hover {
+            background: linear-gradient(135deg, var(--biru), var(--biru-muda));
+            transform: scale(1.02);
+        }
+
+        /* Custom Alert Box */
+        .custom-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--putih);
+            color: var(--hitam);
+            padding: 18px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 9999;
+            max-width: 320px;
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 4px solid var(--biru);
+        }
+
+        .custom-alert.show {
+            transform: translateX(0);
+        }
+
+        .custom-alert.success {
+            border-left-color: var(--hijau);
+        }
+
+        .custom-alert.warning {
+            border-left-color: var(--kuning);
+        }
+
+        .custom-alert.error {
+            border-left-color: var(--merah);
+        }
+
+        .custom-alert p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Modal Form Order */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff, #f0f7ff);
+            color: var(--hitam);
+            padding: 35px 30px;
+            border-radius: 20px;
+            max-width: 420px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+            color: var(--biru-tua);
+        }
+
+        .close-btn {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--merah);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--biru-tua);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--putih);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--biru-muda);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .payment-note {
+            background: #fffbeb;
+            border-left: 3px solid var(--kuning);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #25D366, #128c7e);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* QRIS Section */
+        .qris-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .qris-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .qris-container {
+            background: var(--putih);
+            color: var(--hitam);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 340px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .qris-img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .qris-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #e2e8f0;
+            pointer-events: auto;
+            user-select: auto;
+            -webkit-user-drag: auto;
+        }
+
+        .download-qris-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+        }
+
+        .download-qris-btn:hover {
+            background: var(--biru-muda);
+        }
+
+        /* === UKURAN IKON DOWNLOAD QRIS — UBAH DISINI === */
+        .download-qris-btn img {
+            width: 40px;        /* ← ubah lebar ikon download */
+            height: 40px;       /* ← ubah tinggi ikon download */
+            pointer-events: none;
+        }
+
+        .qris-note {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            opacity: 0.7;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--biru-muda);
+            text-decoration: none;
+        }
+
+        /* === UKURAN TOMBOL WA MELAYANG — UBAH DISINI === */
+        .wa-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;         /* ← ubah ukuran lingkaran tombol */
+            height: 60px;        /* ← ubah ukuran lingkaran tombol */
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;      /* ← ubah ukuran ikon 💬 di dalamnya */
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .stats { gap: 15px; }
+            .custom-alert { left: 20px; right: 20px; max-width: unset; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Custom Alert Container -->
+<div id="customAlert" class="custom-alert">
+    <p id="alertText"></p>
+</div>
+
+<div class="container">
+    <header>
+        <div class="logo-area">
+            <img src="PROFILE.jpg" alt="YOBSZ STURR Logo">
+        </div>
+        <h1>YOBSZ STURR</h1>
+        <p class="tagline">Suntik Saluran WhatsApp & APK Premium</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">Online 24/7</div>
+                <div class="stat-label">Siap Melayani</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Trusted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+62 813-1434-7426</div>
+                <div class="stat-label">Admin WA</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SUNTIK SALURAN WA -->
+    <section>
+        <div class="section-header">
+            <h2><img src="SALURAN.png" alt="Saluran"> SUNTIK SALURAN WHATSAPP — PERMANEN</h2>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">100 Pengikut</div>
+                <div class="card-price">Rp 1.500</div>
+                <button class="order-btn" data-package="Suntik Saluran 100P" data-price="Rp 1.500">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">200 Pengikut</div>
+                <div class="card-price">Rp 1.700</div>
+                <button class="order-btn" data-package="Suntik Saluran 200P" data-price="Rp 1.700">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">300 Pengikut</div>
+                <div class="card-price">Rp 2.300</div>
+                <button class="order-btn" data-package="Suntik Saluran 300P" data-price="Rp 2.300">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">400 Pengikut</div>
+                <div class="card-price">Rp 2.600</div>
+                <button class="order-btn" data-package="Suntik Saluran 400P" data-price="Rp 2.600">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">500 Pengikut</div>
+                <div class="card-price">Rp 3.000</div>
+                <button class="order-btn" data-package="Suntik Saluran 500P" data-price="Rp 3.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">600 Pengikut</div>
+                <div class="card-price">Rp 3.500</div>
+                <button class="order-btn" data-package="Suntik Saluran 600P" data-price="Rp 3.500">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">700 Pengikut</div>
+                <div class="card-price">Rp 3.800</div>
+                <button class="order-btn" data-package="Suntik Saluran 700P" data-price="Rp 3.800">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">800 Pengikut</div>
+                <div class="card-price">Rp 4.500</div>
+                <button class="order-btn" data-package="Suntik Saluran 800P" data-price="Rp 4.500">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">900 Pengikut</div>
+                <div class="card-price">Rp 5.000</div>
+                <button class="order-btn" data-package="Suntik Saluran 900P" data-price="Rp 5.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">1.000 Pengikut</div>
+                <div class="card-price">Rp 6.000</div>
+                <button class="order-btn" data-package="Suntik Saluran 1000P" data-price="Rp 6.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">2.250 Pengikut</div>
+                <div class="card-price">Rp 11.000</div>
+                <button class="order-btn" data-package="Suntik Saluran 2250P" data-price="Rp 11.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- APK -->
+    <section>
+        <div class="section-header">
+            <h2><img src="ANDROID.jpg" alt="APK"> APK PREMIUM</h2>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">APK Suntik & Nokos</div>
+                <div class="card-price">Rp 10.000</div>
+                <button class="order-btn" data-package="APK Suntik & Nokos" data-price="Rp 10.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">APK Logo Premium</div>
+                <div class="card-price">Rp 1.000</div>
+                <button class="order-btn" data-package="APK Logo Premium" data-price="Rp 1.000">
+                    <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-title">APK Panel FF Gacor</div>
+                <div class="card-price">Rp 25.000</div>
+                <button class="order-btn" data-package="APK Panel FF Gacor" data-price="Rp 25.000">
+                 <img src="PESAN.jpg" alt="Pesan"> Pesan
+                </button>
+             </div>
+        </div>
+    </section>
+
+    <!-- QRIS Pembayaran -->
+    <section class="qris-section">
+        <div class="section-header">
+            <h2><img src="QRIS.jpg" alt="QRIS"> PEMBAYARAN QRIS</h2>
+        </div>
+        <div class="qris-wrapper">
+            <div class="qris-container">
+                <div class="qris-img-wrapper">
+                    <img src="qrisyobsz.jpg" alt="QRIS Pembayaran YOBSZ STURR" id="qrisImage">
+                    <a href="QRIS_YOBSZ_STURR.png" download="QRIS_YOBSZ_STURR.png" class="download-qris-btn">
+                        <img src="Download.jpg" alt="Download">
+                    </a>
+                </div>
+                <p><strong>Scan QRIS di atas untuk pembayaran</strong></p>
+                <p class="qris-note">Setelah bayar, konfirmasi ke admin via WhatsApp</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 YOBSZ STURR | Semua Hak Dilindungi</p>
+        <p>Admin: <a href="https://wa.me/6281314347426" target="_blank">+62 813-1434-7426</a></p>
+    </footer>
+</div>
+
+<!-- Tombol WA Melayang -->
+<a href="https://wa.me/6281314347426" target="_blank" class="wa-float">💬</a>
+
+<!-- Modal Form Order -->
+<div id="orderModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Form Pemesanan</h3>
+            <span class="close-btn">&times;</span>
+        </div>
+        <form id="orderForm">
+            <div class="form-group">
+                <label>Nama Paket:</label>
+                <input type="text" id="pkgName" readonly>
+            </div>
+            <div class="form-group">
+                <label>Harga:</label>
+                <input type="text" id="pkgPrice" readonly>
+            </div>
+            <div class="form-group">
+                <label>Nama Kamu:</label>
+                <input type="text" id="custName" placeholder="Masukkan nama kamu" required>
+            </div>
+            <div class="form-group">
+                <label>Nomor WhatsApp:</label>
+                <input type="tel" id="custWa" placeholder="Contoh: 0812xxxx" required>
+            </div>
+            <div class="form-group">
+                <label>Catatan / Tujuan:</label>
+                <textarea id="custNote" rows="3" placeholder="Tulis nomor saluran / info lainnya"></textarea>
+            </div>
+            <div class="payment-note">
+                ⚠️ Jangan lupa kirim bukti bayar ke admin setelah melakukan pembayaran ya!
+            </div>
+            <button type="submit" class="submit-btn">
+                💬 Kirim Pesanan via WhatsApp
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+const modal = document.getElementById('orderModal');
+const pkgName = document.getElementById('pkgName');
+const pkgPrice = document.getElementById('pkgPrice');
+const closeBtn = document.querySelector('.close-btn');
+const form = document.getElementById('orderForm');
+const ADMIN_WA = '6281314347426';
+
+// === CUSTOM ALERT FUNCTION ===
+function showAlert(message, type = 'info', duration = 3000) {
+    const alertBox = document.getElementById('customAlert');
+    const alertText = document.getElementById('alertText');
+    
+    alertBox.classList.remove('show', 'success', 'warning', 'error');
+    void alertBox.offsetWidth;
+    alertText.textContent = message;
+    alertBox.classList.add(type, 'show');
+    
+    clearTimeout(window.alertTimer);
+    window.alertTimer = setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, duration);
+}
+
+// Buka modal saat klik tombol Pesan
+document.querySelectorAll('.order-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        pkgName.value = btn.getAttribute('data-package');
+        pkgPrice.value = btn.getAttribute('data-price');
+        modal.style.display = 'flex';
+        showAlert('Silakan lengkapi data pemesanan!', 'info', 2500);
+    });
+});
+
+// Tutup modal
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    form.reset();
+    showAlert('Form ditutup', 'warning', 1500);
+});
+window.addEventListener('click', e => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        form.reset();
+    }
+});
+
+// Kirim ke WhatsApp
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    const name = document.getElementById('custName').value.trim();
+    const wa = document.getElementById('custWa').value.trim();
+    const note = document.getElementById('custNote').value.trim() || '-';
+    const packageInfo = pkgName.value;
+    const price = pkgPrice.value;
+    const now = new Date();
+    const waktu = now.toLocaleString('id-ID', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+const text = `Halo Admin YOBSZ STURR! Saya mau order:
+
+📦 Paket: ${packageInfo}
+💰 Harga: ${price}
+🕐 Waktu Pesan: ${waktu}
+👤 Nama: ${name}
+📱 No. WA: ${wa}
+📝 Catatan: ${note}
+
+⚠️ Jangan lupa kirim bukti bayar
+
+Mohon info pembayaran & prosesnya, terima kasih!`;
+
+    const url = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(text)}`;
+    
+    showAlert('Membuka WhatsApp...', 'success', 2000);
+    
+    setTimeout(() => {
+        window.open(url, '_blank');
+        modal.style.display = 'none';
+        form.reset();
+    }, 800);
+});
+
+// Mencegah klik kanan / simpan gambar
+document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG' && !e.target.closest('.qris-img-wrapper')) {
+        e.preventDefault();
+        showAlert('Gambar tidak dapat diunduh', 'error', 2000);
+    }
+});
+
+// Mencegah tekan lama di HP
+document.addEventListener('touchstart', e => {
+    if (e.target.tagName === 'IMG' && !e.target.closest('.qris-img-wrapper')) {
+        e.preventDefault();
+    }
+}, { passive: false });
+</script>
+
+</body>
+</html>
